@@ -34,7 +34,7 @@ class os_Shortcodes {
 	
 	function register_textdomain() {
 		$dir = OS_SHORTCODE_PATH . 'lang';
-		load_plugin_textdomain($this->domain, false, $dir);
+		load_plugin_textdomain('organize-series-shortcodes', false, $dir);
 	}
 	
 	function register_shortcodes() {

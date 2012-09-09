@@ -53,7 +53,7 @@ function orgseries_check_series_shortcodes() {;
 
 function orgseries_shortcodes_warning() {
 	global $os_shortcodes;
-	$msg = '<div id="wpp-message" class="error fade"><p>'.__('The <strong>Shortcodes</strong> addon for Organize Series requires the Organize Series plugin to be installed and activated in order to work.  Addons won\'t activate until this condition is met.', $os_shortcodes->domain).'</p></div>';
+	$msg = '<div id="wpp-message" class="error fade"><p>'.__('The <strong>Shortcodes</strong> addon for Organize Series requires the Organize Series plugin to be installed and activated in order to work.  Addons won\'t activate until this condition is met.', 'organize-series-shortcodes').'</p></div>';
 	echo $msg;
 }
 
