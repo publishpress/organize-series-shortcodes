@@ -14,7 +14,7 @@ class os_Shortcodes {
 	public $series_grouping = false; //TODO add support for this.
 	
 	//constructor
-	function os_Shortcodes() {
+	function __construct() {
 		$this->register_shortcodes(); //let's get the various shortcodes setup
 		add_action('admin_init', array( &$this, 'admin_init' ) );
 		add_action('init', array( &$this, 'register_textdomain') );
