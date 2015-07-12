@@ -2,12 +2,12 @@
 /*
 Plugin Name: Organize Series Shortcodes
 Description: This addon enables the ability for users to easily add series information to posts (or pages) via the use of shortcodes (integrated with the WordPress shortcode API).  
-Version: 1.3.1
+Version: 1.3.2
 Author: Darren Ethier
 Author URI: http://organizeseries.com
 */
 
-$os_shortcodes_ver = '1.3.1';
+$os_shortcodes_ver = '1.3.2';
 
 /* LICENSE */
 //"Organize Series Plugin" and all addons for it created by this author are copyright (c) 2007-2012 Darren Ethier. This program is free software; you can redistribute it and/or
