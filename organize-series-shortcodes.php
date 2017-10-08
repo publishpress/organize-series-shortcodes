@@ -8,6 +8,7 @@ Author URI: http://organizeseries.com
 */
 
 $os_shortcodes_ver = '1.3.2';
+require __DIR__ . '/vendor/autoload.php';
 
 /* LICENSE */
 //"Organize Series Plugin" and all addons for it created by this author are copyright (c) 2007-2012 Darren Ethier. This program is free software; you can redistribute it and/or
@@ -34,45 +35,15 @@ define('OS_SHORTCODE_VER', $os_shortcodes_ver );
 define('OS_SHORTCODE_PATH', $os_shortcode_plugin_dir );
 define('OS_SHORTCODE_URL', $os_shortcode_plugin_url);
 
-//let's include required files
-require_once(OS_SHORTCODE_PATH.'os-shortcodes-main.php');
+/**
+ * This allows OS core to take care of the PHP version check
+ * and also ensures we're only using the new style of bootstrapping if the version of OS core with it is active.
+ */
+add_action('AHOS__bootstrapped', function($os_shortcode_plugin_dir) {
+    require $os_shortcode_plugin_dir . 'bootstrap.php';
+});
 
-//load up plugin main stuff
-$os_shortcodes = new os_Shortcodes();
+//fallback on loading legacy-includes.php in case the bootstrapped stuff isn't ready yet.
+require_once $os_shortcode_plugin_dir . 'legacy-includes.php';
 
-// ALWAYS CHECK TO MAKE SURE ORGANIZE SERIES IS RUNNING FIRST //
-add_action('plugins_loaded', 'orgseries_check_series_shortcodes');
-function orgseries_check_series_shortcodes() {;
-	if (!class_exists('orgSeries')) {
-		add_action('admin_notices', 'orgseries_shortcodes_warning');
-		add_action('admin_notices', 'orgseries_shortcodes_deactivate');
-		return;
-	}
-	return;
-}
 
-function orgseries_shortcodes_warning() {
-	global $os_shortcodes;
-	$msg = '<div id="wpp-message" class="error fade"><p>'.__('The <strong>Shortcodes</strong> addon for Organize Series requires the Organize Series plugin to be installed and activated in order to work.  Addons won\'t activate until this condition is met.', 'organize-series-shortcodes').'</p></div>';
-	echo $msg;
-}
-
-function orgseries_shortcodes_deactivate() {
-	deactivate_plugins('organize-series-shortcodes/organize-series-shortcodes.php');
-}
-
-//Automatic Upgrades Stuff
-if ( file_exists(WP_PLUGIN_DIR . '/organize-series/inc/pue-client.php') ) {
-	//let's get the client api key for updates
-	$series_settings = get_option('org_series_options');
-	$api_key = $series_settings['orgseries_api'];
-	$host_server_url = 'http://organizeseries.com';
-	$plugin_slug = 'organize-series-shortcodes';
-	$options = array(
-		'apikey' => $api_key,
-		'lang_domain' => 'organize-series'
-	);
-	
-	require( WP_PLUGIN_DIR . '/organize-series/inc/pue-client.php' );
-	$check_for_updates = new PluginUpdateEngineChecker($host_server_url, $plugin_slug, $options);
-}

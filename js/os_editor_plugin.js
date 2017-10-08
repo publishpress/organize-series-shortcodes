@@ -31,7 +31,7 @@
 				}
 			});
 			os_ed.addButton('os_series_meta', {
-				title : 'Add OS Series Meta',
+				title : 'Add OS Series AbstractMeta',
 				image : url + '/../images/series_meta-20x20.png',
 				onclick : function() {
 					os_CustomButtonClick('series_meta');
