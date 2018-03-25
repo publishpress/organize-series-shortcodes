@@ -25,7 +25,6 @@ require __DIR__ . '/vendor/autoload.php';
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
-//It goes without saying that this is a plugin for WordPress and I have no interest in developing it for other platforms so please, don't ask ;).
 
 $os_shortcode_plugin_dir = WP_PLUGIN_DIR . '/organize-series-shortcodes/';
 $os_shortcode_plugin_url = WP_PLUGIN_URL. '/organize-series-shortcodes/';
